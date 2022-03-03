@@ -14,26 +14,29 @@ rtm = RTMClient(token=slack_token)
 re_acronym = re.compile(r"\b[A-ZÅÄÖÜß]{2,}\b")
 
 
-gpt3_contex = """
-NYOB: None of Your Business
-OFC: Of Course
-OMG: Oh My God
-PANS: Pretty Awesome New Stuff
-PHAT: Pretty, Hot, And Tempting
-POS: Parents Over Shoulder
-ROFL: Rolling On the Floor Laughing
-SMH: Shaking My Head
-TTYL: Talk To You Later
-YOLO: You Only Live Once
-AXB: Acronym eXplanation Bot
-WTH: What The Heck
+gpt3_contex = """List of acronyms
+MAKE SURE THAT THE LETTERS MATCH EXACTLY!
+
+NYOB | None of Your Business
+OFC | Of Course
+OMG | Oh My God
+PANS | Pretty Awesome New Stuff
+PHAT | Pretty, Hot, And Tempting
+POS | Parents Over Shoulder
+ROFL | Rolling On the Floor Laughing
+SMH | Shaking My Head
+TTYL | Talk To You Later
+YOLO | You Only Live Once
+AXB | Acronym eXplanation Bot
+WTH | What The Heck
+ROFLMAOSHICAD | Rolling On Floor Laughing My Ass Off So Hard I Choke And Die
 """
 
 
 def gpt_3_define_acronym(acronym):
     url = "https://api.openai.com/v1/engines/text-davinci-001/completions"
-    prompt = gpt3_contex + acronym + ":"
-    payload = {"prompt": prompt, "max_tokens": 3 * len(acronym), "temperature": 0.5}
+    prompt = gpt3_contex + acronym + " |"
+    payload = {"prompt": prompt, "max_tokens": 3 * len(acronym), "temperature": 0.0}
     response = requests.post(
         url,
         json=payload,
