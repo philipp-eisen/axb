@@ -11,7 +11,7 @@ slack_token = os.environ.get("SLACK_TOKEN")
 gpt3_token = os.environ.get("GPT3_TOKEN")
 
 rtm = RTMClient(token=slack_token)
-re_acronym = re.compile(r"\b[A-ZÅÄÖÜß]{2,}\b")
+re_acronym = re.compile(r"\b[A-ZÅÄÖÜß0-9]{2,}\b")
 
 
 gpt3_contex = """List of acronyms
