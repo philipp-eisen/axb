@@ -34,7 +34,7 @@ ROFLMAOSHICAD | Rolling On Floor Laughing My Ass Off So Hard I Choke And Die
 
 
 def gpt_3_define_acronym(acronym):
-    url = "https://api.openai.com/v1/engines/text-davinci-001/completions"
+    url = "https://api.openai.com/v1/engines/text-davinci-002/completions"
     prompt = gpt3_contex + acronym + " |"
     payload = {"prompt": prompt, "max_tokens": 3 * len(acronym), "temperature": 0.0}
     response = requests.post(
